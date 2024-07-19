@@ -2,14 +2,14 @@ import React from "react";
 
 function Navbar() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
-  function logout(){
-    localStorage.removeItem('currentUser')
-    window.location.href='/login'
+  function logout() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "/login";
   }
   return (
     <div>
       <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/home">
           SHEY ROOMS
         </a>
         <button
@@ -21,7 +21,9 @@ function Navbar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"><i class="fa-solid fa-bars" style={{color:'white'}}></i></span>
+          <span class="navbar-toggler-icon">
+            <i class="fa-solid fa-bars" style={{ color: "white" }}></i>
+          </span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mr-5">
@@ -36,18 +38,22 @@ function Navbar() {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                   <i class="fa fa-user"></i> {user.name}
+                    <i class="fa fa-user"></i> {user.name}
                   </button>
                   <div
                     class="dropdown-menu"
                     aria-labelledby="dropdownMenuButton"
                   >
-                    <a class="dropdown-item" href="#">
-                      Bookings
+                    <a class="dropdown-item" href="/profile">
+                      Profile
                     </a>
-                    <a class="dropdown-item" href="#" onClick={logout}>
+                    <p
+                      class="dropdown-item"
+                      onClick={logout}
+                      style={{ cursor: "pointer" }}
+                    >
                       Logout
-                    </a>
+                    </p>
                   </div>
                 </div>
               </>
