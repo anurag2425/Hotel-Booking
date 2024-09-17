@@ -21,6 +21,7 @@ function App() {
           <Route
             path="/book/:roomid/:fromdate/:todate"
             element={<Bookingscreen />}
+            
           />
           <Route path="/register" element={<Registerscreen />} />
           <Route path="/login" element={<Loginscreen />} />
