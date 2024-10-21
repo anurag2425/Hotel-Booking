@@ -47,9 +47,9 @@ function Bookingscreen() {
   async function bookRoom() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (!currentUser) {
-      // Handle case where user is not logged in or currentUser is null
+      
       console.error("User not logged in");
-      // Example: Redirect to login page or show error message
+      
       return;
     }
 
@@ -66,7 +66,7 @@ function Bookingscreen() {
       const result = await (
         await axios.post("/api/bookings/bookroom", bookingDetails)
       ).data;
-      // Handle success if needed
+      
       console.log(result);
       Swal.fire("Congrats", "Booking done successfully", "success").then(
         (res) => (window.location.href = "/profile")
@@ -74,7 +74,7 @@ function Bookingscreen() {
     } catch (error) {
       console.error("Error booking room:", error);
       Swal.fire("Oops!", "Something went wrong", "error");
-      // Handle booking error, e.g., show error message to user
+       
     }
   }
 

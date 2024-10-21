@@ -8,8 +8,8 @@ function LandingPagescreen() {
         className="col-md-9 my-auto text-center"
         style={{ borderRight: "5px solid white" }}
       >
-        <h2 style={{ color: "white", fontSize: "130px" }}>SheyRooms</h2>
-        <h1 style={{ color: "white" }}>There is only one Boss. The Guest</h1>
+        <h2 style={{ color: "white", fontSize: "130px" }}>HotelRooms</h2>
+        <h1 style={{ color: "white" }}> Be Our Guest</h1>
 
         <Link to="/home">
           <button
