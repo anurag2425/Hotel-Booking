@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
@@ -7,28 +7,30 @@ function Loginscreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   async function Login() {
-    const user = {
-      email,
-      password,
-    };
+    if (!email || !password) {
+      setError('Email and password are required');
+      return;
+    }
+    
+    const user = { email, password };
     try {
       setLoading(true);
-      setError(false);
+      setError("");
       const result = (await axios.post("/api/users/login", user)).data;
       setLoading(false);
       localStorage.setItem("currentUser", JSON.stringify(result));
       window.location.href = "/home";
     } catch (error) {
-      console.log(error);
+      console.error('Login error:', error.response ? error.response.data : error.message);
       setLoading(false);
-      setError(true);
+      setError(error.response ? error.response.data.message : 'An error occurred');
     }
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const user = localStorage.getItem("currentUser");
     if (user) {
       window.location.href = "/home";
